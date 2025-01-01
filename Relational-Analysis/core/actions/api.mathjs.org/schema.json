@@ -1,0 +1,50 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Math.js API",
+    "description": "API gratuita para realizar cálculos matemáticos.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.mathjs.org/v4",
+      "description": "Servidor principal de Math.js"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "calculateExpression",
+        "summary": "Resuelve una expresión matemática.",
+        "parameters": [
+          {
+            "name": "expr",
+            "in": "query",
+            "required": true,
+            "description": "La expresión matemática a calcular (por ejemplo: '2+2' o 'sqrt(16)'). Asegúrate de que esté codificada en formato URL.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado del cálculo en formato JSON.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
